@@ -1,2 +1,4 @@
-export { Section1 } from "./Section1/Section1";
-export { Section2 } from "./Section2/Section2";
+export { HireInsurance } from '@/presentation/views/HireInsurance/HireInsurance';
+export { MyInsurances } from '@/presentation/views/MyInsurances/MyInsurances';
+export { Login } from '@/presentation/views/Login/Login';
+export { SignUp } from '@/presentation/views/SignUp/SignUp';

@@ -7,6 +7,7 @@ export const theme = {
       '02': '#917bff',
       '03': '#332963',
       '04': '#003F59',
+      '05': '#9c89ff',
     },
     secondary: {
       '01': '#2D4059',
@@ -21,6 +22,7 @@ export const theme = {
     },
     gradient: {
       title: ` linear-gradient(135deg, #56cfe1 5%, #45bfbd 47.53%, #6affdb 83.33%)`,
+      sidebar: `linear-gradient(315deg, #917bff, #7B61FF)`,
     },
   },
 };

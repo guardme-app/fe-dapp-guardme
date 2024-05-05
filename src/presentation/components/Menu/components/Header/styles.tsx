@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-  height: 6rem;
+  height: 4rem;
   width: 100%;
-  background: ${({ theme }) => theme.colors.neutral['grey']};
   position: fixed;
   right: 0;
   width: calc(100% - 240px);
