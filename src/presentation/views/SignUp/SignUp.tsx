@@ -70,6 +70,7 @@ export const SignUp: React.FC = () => {
             noValidate
             onSubmit={handleSubmit}
             sx={{ mt: 1 }}
+            minWidth="80%"
           >
             {showSignUpOptions ? (
               <>
@@ -84,7 +85,7 @@ export const SignUp: React.FC = () => {
                       Continue with Google
                     </Button.Outlined>
                   </Grid>
-                  <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                     <Button.Outlined
                       type="button"
                       style={SignUpStyles.personalizedButton}
@@ -98,7 +99,7 @@ export const SignUp: React.FC = () => {
                       />
                       Continue with Apple ID
                     </Button.Outlined>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
                 <Typography
                   variant="body2"
@@ -205,7 +206,7 @@ export const SignUp: React.FC = () => {
         sx={{
           backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
           backgroundRepeat: 'no-repeat',
-          backgroundColor: t =>
+          backgroundColor: (t) =>
             t.palette.mode === 'light'
               ? t.palette.grey[50]
               : t.palette.grey[900],
