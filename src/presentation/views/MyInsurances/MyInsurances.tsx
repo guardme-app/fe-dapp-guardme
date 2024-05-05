@@ -1,4 +1,4 @@
-export const Section2: React.FC = () => {
+export const MyInsurances: React.FC = () => {
   return (
     <div>
       <h2>Section 2</h2>

@@ -6,13 +6,13 @@ interface IMenuItemProps {
 }
 
 const Container = styled.div<{ close: boolean }>`
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: 240px;
   padding-top: 3rem;
   min-width: 15rem;
   height: 100vh;
-  background: ${({ theme }) => theme.colors.primary['01']};
+  background: ${({ theme }) => theme.colors.gradient['sidebar']};
   overflow-y: auto;
   overflow-x: hidden;
 

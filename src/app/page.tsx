@@ -1,4 +1,4 @@
-import { Section1 } from "@/presentation/views";
+import { HireInsurance } from '@/presentation/views';
 export default function Home() {
-  return <Section1 />;
+  return <HireInsurance />;
 }
