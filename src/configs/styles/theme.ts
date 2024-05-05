@@ -21,6 +21,7 @@ export const theme = {
     },
     gradient: {
       title: ` linear-gradient(135deg, #56cfe1 5%, #45bfbd 47.53%, #6affdb 83.33%)`,
+      sidebar: `linear-gradient(315deg, #917bff, #7B61FF)`,
     },
   },
 };

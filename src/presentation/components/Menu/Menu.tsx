@@ -2,12 +2,17 @@
 
 import { Header } from './components/Header/Header';
 import { Sidebar } from './components/Sidebar/Sidebar';
+import { Container, Content } from './styles';
 
-export const Menu: React.FC = () => {
+interface IMenuProps {
+  children: React.ReactNode;
+}
+export const Menu: React.FC<IMenuProps> = ({ children }: IMenuProps) => {
   return (
-    <>
+    <Container>
       <Header />
-      <Sidebar></Sidebar>
-    </>
+      <Sidebar />
+      <Content>{children}</Content>
+    </Container>
   );
 };

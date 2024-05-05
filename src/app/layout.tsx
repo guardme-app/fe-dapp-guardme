@@ -16,8 +16,7 @@ export default function RootLayout({
             <ThemeProvider>
               {true ? (
                 <>
-                  <Menu />
-                  {children}
+                  <Menu>{children}</Menu>
                 </>
               ) : (
                 <>{children}</>
