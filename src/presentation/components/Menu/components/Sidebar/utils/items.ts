@@ -1,12 +1,17 @@
 import account from '@/presentation/assets/sidebar/account.png';
 import shield from '@/presentation/assets/sidebar/shield.png';
+import locker from '@/presentation/assets/sidebar/locker.png';
+
+//social media
+import website from '@/presentation/assets/sidebar/website.png';
+import x from '@/presentation/assets/sidebar/x.png';
 
 export const sidebarItems = {
   nav: [
     {
       label: 'Hire Insurance',
-      icon: shield,
-      path: '/hire-insurance',
+      icon: locker,
+      path: '/',
     },
     {
       label: 'My Insurances',
@@ -23,16 +28,12 @@ export const sidebarItems = {
 
   socialMedia: [
     {
-      icon: 'Facebook',
+      icon: website,
       path: 'https://www.facebook.com',
     },
     {
-      icon: 'Instagram',
-      path: 'https://www.instagram.com',
-    },
-    {
-      icon: 'Twitter',
-      path: 'https://www.twitter.com',
+      icon: x,
+      path: 'https://x.com',
     },
   ],
 };

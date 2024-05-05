@@ -14,7 +14,7 @@ const Default = styled.button`
   transition: all 0.2s ease;
 
   &:hover {
-    filter: brightness(1.1);
+    filter: brightness(1.15);
   }
 
   &:disabled {
@@ -44,7 +44,9 @@ const Outlined = styled.button`
   border: 2px solid ${({ theme }) => theme.colors.primary['01']};
 
   &:hover {
-    filter: brightness(1.1);
+    color: ${({ theme }) => theme.colors.neutral['white']};
+    background: ${({ theme }) => theme.colors.primary['02']};
+    border: 2px solid ${({ theme }) => theme.colors.primary['02']};
   }
 
   &:disabled {
