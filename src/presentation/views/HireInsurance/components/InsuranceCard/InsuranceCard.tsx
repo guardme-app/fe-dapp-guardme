@@ -3,7 +3,6 @@ import { Button } from '@/presentation/components/Button/Button';
 import { useModal } from '@/core/hooks/useModal';
 
 import Image, { StaticImageData } from 'next/image';
-import { IModal } from '@/core/states/modal';
 
 interface InsuranceCardProps {
   type: string;
@@ -25,7 +24,7 @@ export const InsuranceCard: React.FC<InsuranceCardProps> = ({
       <Image src={image} alt="insurance image" width={200} height={130} />
       <h1>{type}</h1>
       <p>{description}</p>
-      <Button.Default onClick={() => openModal({ name: modalName } as IModal)}>
+      <Button.Default onClick={() => openModal({ name: modalName } as any)}>
         Hire
       </Button.Default>
     </HireInsuranceStyles.Card>

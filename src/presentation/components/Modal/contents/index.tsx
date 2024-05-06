@@ -23,7 +23,7 @@ interface IModals {
   props: any;
 }
 
-export const modals = ({ props }: IModals) => {
+export const modals = ({ props }: any) => {
   return {
     buyVehicle: <BuyVehicle {...props} />,
     buyHouse: <BuyHouse {...props} />,

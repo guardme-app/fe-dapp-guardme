@@ -3,7 +3,6 @@ import { Button } from '@/presentation/components/Button/Button';
 import { useModal } from '@/core/hooks/useModal';
 
 import Image, { StaticImageData } from 'next/image';
-import { IModal } from '@/core/states/modal';
 
 interface InsuranceCardProps {
   type: string;
@@ -28,7 +27,7 @@ export const MyInsuranceCard: React.FC<InsuranceCardProps> = ({
         <span>Value:</span>
         <p>{value}</p>{' '}
         <Button.Default
-          onClick={() => openModal({ name: modalName } as IModal)}
+          onClick={() => openModal({ name: modalName } as any)}
         >
           Redeem
         </Button.Default>
