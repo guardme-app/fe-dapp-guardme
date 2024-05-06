@@ -13,6 +13,12 @@ const BuySmartphone = dynamic(() =>
   ),
 );
 
+const RedeemVehicle = dynamic(() =>
+  import('./RedeemVehicle/ReedeemVehicle').then(
+    (component) => component.RedeemVehicle,
+  ),
+);
+
 interface IModals {
   props: any;
 }
@@ -22,6 +28,7 @@ export const modals = ({ props }: IModals) => {
     buyVehicle: <BuyVehicle {...props} />,
     buyHouse: <BuyHouse {...props} />,
     buySmartphone: <BuySmartphone {...props} />,
+    redeemVehicle: <RedeemVehicle {...props} />,
     '': null,
   };
 };
