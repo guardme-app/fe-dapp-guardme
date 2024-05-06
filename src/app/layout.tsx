@@ -8,6 +8,7 @@ import { Menu } from '@/presentation/components/Menu/Menu';
 
 import '@/configs/styles/globalStyles.css';
 import { AuthProvider } from '@/core/providers/AuthProvider';
+import { WalletProvider } from '@/core/providers/WalletProvider';
 
 export default function RootLayout({
   children,
@@ -21,17 +22,19 @@ export default function RootLayout({
       <html lang="en">
         <body suppressHydrationWarning={true}>
           <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-            <ThemeProvider>
-              <AuthProvider>
-                {pathname !== '/sign-up' && pathname !== '/login' ? (
-                  <>
-                    <Menu>{children}</Menu>
-                  </>
-                ) : (
-                  <>{children}</>
-                )}
-              </AuthProvider>
-            </ThemeProvider>
+            <WalletProvider>
+              <ThemeProvider>
+                <AuthProvider>
+                  {pathname !== '/sign-up' && pathname !== '/login' ? (
+                    <>
+                      <Menu>{children}</Menu>
+                    </>
+                  ) : (
+                    <>{children}</>
+                  )}
+                </AuthProvider>
+              </ThemeProvider>
+            </WalletProvider>
           </AppRouterCacheProvider>
         </body>
       </html>

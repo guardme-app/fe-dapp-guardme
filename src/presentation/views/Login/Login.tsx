@@ -20,9 +20,11 @@ import gLogo from '@/presentation/assets/g-logo.png';
 
 import { LoginStyles } from './styles';
 import { useAuthGoogle } from '@/core/hooks/useAuthGoogle';
+import { useWallet } from '@/core/hooks/useWallet';
 
 export const Login: React.FC = () => {
   const { signIn } = useAuthGoogle();
+  const { buyPlan } = useWallet();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -56,6 +58,7 @@ export const Login: React.FC = () => {
           }}
         >
           <Image src={gLogo} alt="guard me icon" width={48} height={64} />
+          <button onClick={() => buyPlan(1)}>Buy Plan</button>
           <LoginStyles.Title>Welcome Back!</LoginStyles.Title>
           <Box
             component="form"
