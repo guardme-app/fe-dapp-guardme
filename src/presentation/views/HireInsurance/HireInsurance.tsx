@@ -11,11 +11,12 @@ export const HireInsurance: React.FC = () => {
         Pick up your insurance
       </HireInsuranceStyles.Title>
       <HireInsuranceStyles.Content>
-        {insuranceItems.map(item => (
+        {insuranceItems.map((item) => (
           <InsuranceCard
             key={item.type}
             type={item.type}
             image={item.image}
+            modalName={item.modalName}
             description={item.description}
           />
         ))}

@@ -19,10 +19,14 @@ import appleId from '@/presentation/assets/apple-id.png';
 import google from '@/presentation/assets/google.png';
 import gLogo from '@/presentation/assets/g-logo.png';
 import arrowLeft from '@/presentation/assets/arrow-left.png';
-import { SignUpStyles } from './styles';
+import { SignUpStyles } from '@/presentation/views/SignUp/styles';
+import { useAuthGoogle } from '@/core/hooks/useAuthGoogle';
+import { useRouter } from 'next/navigation';
 
 export const SignUp: React.FC = () => {
+  const { signIn } = useAuthGoogle();
   const [showSignUpOptions, setShowSignUpOptions] = useState(true);
+  const router = useRouter();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -36,7 +40,11 @@ export const SignUp: React.FC = () => {
   };
 
   const handleGoogleAuth = () => {
-    //toDo
+    const { signIn } = useAuthGoogle();
+    try {
+      signIn();
+      router.push(`/`);
+    } catch {}
   };
 
   const handleAppleAuth = () => {
@@ -70,6 +78,7 @@ export const SignUp: React.FC = () => {
             noValidate
             onSubmit={handleSubmit}
             sx={{ mt: 1 }}
+            minWidth="80%"
           >
             {showSignUpOptions ? (
               <>
@@ -84,7 +93,7 @@ export const SignUp: React.FC = () => {
                       Continue with Google
                     </Button.Outlined>
                   </Grid>
-                  <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                     <Button.Outlined
                       type="button"
                       style={SignUpStyles.personalizedButton}
@@ -98,7 +107,7 @@ export const SignUp: React.FC = () => {
                       />
                       Continue with Apple ID
                     </Button.Outlined>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
                 <Typography
                   variant="body2"
@@ -143,26 +152,7 @@ export const SignUp: React.FC = () => {
                   />
                   Back
                 </SignUpStyles.Back>
-
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="name"
-                  label="Name"
-                  name="name"
-                  autoComplete="name"
-                  autoFocus
-                />
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="cpf"
-                  label="CPF"
-                  name="cpf"
-                  autoComplete="cpf"
-                />
+       
                 <TextField
                   margin="normal"
                   required
@@ -205,7 +195,7 @@ export const SignUp: React.FC = () => {
         sx={{
           backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
           backgroundRepeat: 'no-repeat',
-          backgroundColor: t =>
+          backgroundColor: (t) =>
             t.palette.mode === 'light'
               ? t.palette.grey[50]
               : t.palette.grey[900],

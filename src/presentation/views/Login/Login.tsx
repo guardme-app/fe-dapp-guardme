@@ -14,13 +14,24 @@ import {
 
 import { Button } from '@/presentation/components/Button/Button';
 import Image from 'next/image';
-import appleId from '@/presentation/assets/apple-id.png';
+// import appleId from '@/presentation/assets/apple-id.png';
 import google from '@/presentation/assets/google.png';
 import gLogo from '@/presentation/assets/g-logo.png';
 
 import { LoginStyles } from './styles';
+import { useAuthGoogle } from '@/core/hooks/useAuthGoogle';
+import { useWallet } from '@/core/hooks/useWallet';
+import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export const Login: React.FC = () => {
+  const { signIn } = useAuthGoogle();
+  const { buyPlan, userId } = useWallet();
+  const { user } = useAuthGoogle();
+  const pathname = usePathname();
+  const router = useRouter();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -31,12 +42,15 @@ export const Login: React.FC = () => {
   };
 
   const handleGoogleAuth = () => {
-    //toDo
+    try {
+      signIn();
+      router.push(`/`);
+    } catch {}
   };
 
-  const handleAppleAuth = () => {
-    //toDo
-  };
+  // const handleAppleAuth = () => {
+  //   signInWithApple();
+  // };
 
   return (
     <Grid container component="main" sx={{ height: '100vh' }}>
@@ -69,14 +83,14 @@ export const Login: React.FC = () => {
               <Image src={google} width={24} height={24} alt="google" />
               Continue with Google
             </Button.Outlined>
-            <Button.Outlined
+            {/* <Button.Outlined
               type="button"
               style={LoginStyles.personalizedButton}
               onClick={handleAppleAuth}
             >
               <Image src={appleId} width={24} height={24} alt="apple id" />
               Login with Apple ID
-            </Button.Outlined>
+            </Button.Outlined> */}
             <Typography
               variant="body2"
               align="center"
@@ -135,7 +149,7 @@ export const Login: React.FC = () => {
         sx={{
           backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
           backgroundRepeat: 'no-repeat',
-          backgroundColor: t =>
+          backgroundColor: (t) =>
             t.palette.mode === 'light'
               ? t.palette.grey[50]
               : t.palette.grey[900],

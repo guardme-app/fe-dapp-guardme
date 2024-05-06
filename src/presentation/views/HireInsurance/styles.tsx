@@ -2,8 +2,10 @@ import styled from '@emotion/styled';
 import { openSans } from '@/configs/styles/globalStyles';
 
 const Container = styled.div`
-  height: 100dvh;
+  height: 100vh;
+  overflow-y: auto;
   width: calc(100% -240px);
+  margin-bottom: 20rem;
   display: flex;
   align-items: center;
   flex-direction: column;
