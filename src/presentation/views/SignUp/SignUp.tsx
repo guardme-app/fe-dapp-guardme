@@ -19,7 +19,7 @@ import appleId from '@/presentation/assets/apple-id.png';
 import google from '@/presentation/assets/google.png';
 import gLogo from '@/presentation/assets/g-logo.png';
 import arrowLeft from '@/presentation/assets/arrow-left.png';
-import { SignUpStyles } from './styles';
+import { SignUpStyles } from '@/presentation/views/SignUp/styles';
 
 export const SignUp: React.FC = () => {
   const [showSignUpOptions, setShowSignUpOptions] = useState(true);
@@ -144,26 +144,7 @@ export const SignUp: React.FC = () => {
                   />
                   Back
                 </SignUpStyles.Back>
-
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="name"
-                  label="Name"
-                  name="name"
-                  autoComplete="name"
-                  autoFocus
-                />
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="cpf"
-                  label="CPF"
-                  name="cpf"
-                  autoComplete="cpf"
-                />
+       
                 <TextField
                   margin="normal"
                   required

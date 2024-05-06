@@ -5,7 +5,8 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 
 import { ThemeProvider } from '@/core/providers/ThemeProvider';
 import { Menu } from '@/presentation/components/Menu/Menu';
-
+import { Modal } from '@/presentation/components/Modal/Modal';
+import { ToastContainer } from 'react-toastify';
 import '@/configs/styles/globalStyles.css';
 import { AuthProvider } from '@/core/providers/AuthProvider';
 import { WalletProvider } from '@/core/providers/WalletProvider';
@@ -24,6 +25,7 @@ export default function RootLayout({
           <AppRouterCacheProvider options={{ enableCssLayer: true }}>
             <WalletProvider>
               <ThemeProvider>
+                <ToastContainer />
                 <AuthProvider>
                   {pathname !== '/sign-up' && pathname !== '/login' ? (
                     <>
