@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 const Container = styled.div`
   height: 4rem;
-  width: 100%;
   position: fixed;
   right: 0;
   width: calc(100% - 240px);

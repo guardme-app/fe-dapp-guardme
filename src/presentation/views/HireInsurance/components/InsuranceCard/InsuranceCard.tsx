@@ -22,7 +22,7 @@ export const InsuranceCard: React.FC<InsuranceCardProps> = ({
 
   return (
     <HireInsuranceStyles.Card>
-      <Image src={image} alt="insurance image" width={200} height={200} />
+      <Image src={image} alt="insurance image" width={200} height={130} />
       <h1>{type}</h1>
       <p>{description}</p>
       <Button.Default onClick={() => openModal({ name: modalName } as IModal)}>
