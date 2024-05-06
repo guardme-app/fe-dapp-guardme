@@ -10,7 +10,7 @@ interface InsuranceCardProps {
   description: string;
   modalName: string;
 }
-
+//
 export const InsuranceCard: React.FC<InsuranceCardProps> = ({
   type,
   image,
