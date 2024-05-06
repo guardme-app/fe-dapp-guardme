@@ -20,9 +20,13 @@ import google from '@/presentation/assets/google.png';
 import gLogo from '@/presentation/assets/g-logo.png';
 import arrowLeft from '@/presentation/assets/arrow-left.png';
 import { SignUpStyles } from '@/presentation/views/SignUp/styles';
+import { useAuthGoogle } from '@/core/hooks/useAuthGoogle';
+import { useRouter } from 'next/navigation';
 
 export const SignUp: React.FC = () => {
+  const { signIn } = useAuthGoogle();
   const [showSignUpOptions, setShowSignUpOptions] = useState(true);
+  const router = useRouter();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -36,7 +40,11 @@ export const SignUp: React.FC = () => {
   };
 
   const handleGoogleAuth = () => {
-    //toDo
+    const { signIn } = useAuthGoogle();
+    try {
+      signIn();
+      router.push(`/`);
+    } catch {}
   };
 
   const handleAppleAuth = () => {

@@ -7,11 +7,15 @@ import { useModal } from '@/core/hooks/useModal';
 import vehicle from '@/presentation/assets/vehicle.png';
 
 import { RedeemVehicleStyles } from './styles';
+import { useWallet } from '@/core/hooks/useWallet';
+
+import { toast } from 'react-toastify';
 
 export const RedeemVehicle: React.FC = () => {
   const [inputAmount, setInputAmount] = useState<number | string>();
   const [insuranceCost, setInsuranceCost] = useState<number>(0);
   const { closeModal } = useModal();
+  const { requestWithdraw, withdraw } = useWallet();
 
   return (
     <RedeemVehicleStyles.Container>
@@ -42,10 +46,16 @@ export const RedeemVehicle: React.FC = () => {
             onChange={(e: ChangeEvent<HTMLInputElement>) => {}}
           />
         </Button.Outlined>
-        <Button.Default
-          disabled
-          onClick={() => console.log('implement onClick')}
-        >
+        <Button.Default onClick={async () => {
+          try{
+            await requestWithdraw();
+            await withdraw();
+            toast.success('Withdraw done');
+            closeModal();
+          }catch(error){
+            toast.error('Error when withdraw');
+          }
+        }}>
           Redeem
         </Button.Default>
       </RedeemVehicleStyles.ButtonsContainer>

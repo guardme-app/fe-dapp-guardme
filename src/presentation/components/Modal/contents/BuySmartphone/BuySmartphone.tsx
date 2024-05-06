@@ -7,11 +7,15 @@ import { useModal } from '@/core/hooks/useModal';
 import smartphone from '@/presentation/assets/smartphone.png';
 
 import { BuySmartphoneStyles } from './styles';
+import { useWallet } from '@/core/hooks/useWallet';
+
+import { toast } from 'react-toastify';
 
 export const BuySmartphone: React.FC = () => {
   const [inputAmount, setInputAmount] = useState<number | string>();
   const [insuranceCost, setInsuranceCost] = useState<number>(0);
   const { closeModal } = useModal();
+  const { buyPlan } = useWallet();
 
   return (
     <BuySmartphoneStyles.Container>
@@ -43,7 +47,15 @@ export const BuySmartphone: React.FC = () => {
           }}
           value={inputAmount}
         />
-        <Button.Default onClick={() => console.log('implement onClick')}>
+        <Button.Default onClick={async () => {
+          try{
+            await buyPlan(2);
+            toast.success('Insurance done');
+            closeModal();
+          }catch(error){
+            toast.error('Error when purchasing insurance');
+          }
+        }}>
           Purchase
         </Button.Default>
       </BuySmartphoneStyles.ButtonsContainer>

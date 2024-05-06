@@ -1,10 +1,13 @@
 import { ReactNode, createContext, useState } from 'react';
+import { toast } from 'react-toastify'
 
 export interface WalletData {
   createWallet: () => void;
   userWallet: any | null;
   userId: any | null;
   buyPlan: any | null;
+  requestWithdraw: any | null;
+  withdraw: any | null;
 }
 
 export const WalletContext = createContext<WalletData>({} as WalletData);
@@ -19,7 +22,7 @@ export const WalletProvider: React.FC<IWalletProvider> = ({ children }) => {
 
   const createWallet = async () => {
     console.log('entrou');
-    try {
+  
       const options = {
         method: 'POST',
         headers: {
@@ -32,11 +35,11 @@ export const WalletProvider: React.FC<IWalletProvider> = ({ children }) => {
         .then((response) => {
           setUserWallet(response.address);
           setUserId(response.id);
+
+          () => toast("Account created!");
         })
         .catch((err) => console.error(err));
-    } catch (error) {
-      console.log(error);
-    }
+    
   };
 
   const buyPlan = async (planId: number) => {
@@ -110,6 +113,8 @@ export const WalletProvider: React.FC<IWalletProvider> = ({ children }) => {
         userWallet,
         userId,
         buyPlan,
+        requestWithdraw,
+        withdraw
       }}
     >
       {children}

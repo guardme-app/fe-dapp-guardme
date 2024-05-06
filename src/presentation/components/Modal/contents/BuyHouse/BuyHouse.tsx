@@ -7,11 +7,15 @@ import { useModal } from '@/core/hooks/useModal';
 import house from '@/presentation/assets/house.png';
 
 import { BuyHouseStyles } from './styles';
+import { useWallet } from '@/core/hooks/useWallet';
+
+import { toast } from 'react-toastify';
 
 export const BuyHouse: React.FC = () => {
   const [inputAmount, setInputAmount] = useState<number | string>();
   const [insuranceCost, setInsuranceCost] = useState<number>(0);
   const { closeModal } = useModal();
+  const { buyPlan } = useWallet();
 
   return (
     <BuyHouseStyles.Container>
@@ -37,7 +41,15 @@ export const BuyHouse: React.FC = () => {
           }}
           value={inputAmount}
         />
-        <Button.Default onClick={() => console.log('implement onClick')}>
+        <Button.Default onClick={async () => {
+          try{
+            await buyPlan(3);
+            toast.success('Insurance done');
+            closeModal();
+          }catch(error){
+            toast.error('Error when purchasing insurance');
+          }
+        }}>
           Purchase
         </Button.Default>
       </BuyHouseStyles.ButtonsContainer>

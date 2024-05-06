@@ -11,6 +11,8 @@ import '@/configs/styles/globalStyles.css';
 import { AuthProvider } from '@/core/providers/AuthProvider';
 import { WalletProvider } from '@/core/providers/WalletProvider';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,7 +26,9 @@ export default function RootLayout({
         <body suppressHydrationWarning={true}>
           <AppRouterCacheProvider options={{ enableCssLayer: true }}>
             <WalletProvider>
+             
               <ThemeProvider>
+              <Modal />
                 <ToastContainer />
                 <AuthProvider>
                   {pathname !== '/sign-up' && pathname !== '/login' ? (
